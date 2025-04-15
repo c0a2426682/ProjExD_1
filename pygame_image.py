@@ -21,6 +21,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: return
 
+        kouka_x = -1
+        kouka_y = 0
         x = tmr % 3200
         screen.blit(bg_img, [0-x, 0])
         screen.blit(bg_img2, [1600-x, 0])
@@ -28,14 +30,14 @@ def main():
         screen.blit(kouka_img,kouka_rct)
         key_lst = pg.key.get_pressed()
         if key_lst[pg.K_UP]:
-            kouka_rct.move_ip((0,-1))
+            kouka_y -= 1
         if key_lst[pg.K_DOWN]:
-            kouka_rct.move_ip((0,+1))
+            kouka_y += 1
         if key_lst[pg.K_LEFT]:
-            kouka_rct.move_ip((-1,0))
+            kouka_x -= 1
         if key_lst[pg.K_RIGHT]:
-            kouka_rct.move_ip((+2,0))
-        kouka_rct.move_ip((-1,0))
+            kouka_x += 2
+        kouka_rct.move_ip((kouka_x,kouka_y))
         pg.display.update()
         tmr += 1
         clock.tick(200)
