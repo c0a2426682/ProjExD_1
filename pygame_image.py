@@ -16,6 +16,7 @@ def main():
     kouka_rct = kouka_img.get_rect()
     kouka_rct.center = 300,200
     tmr = 0
+    
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: return
@@ -33,7 +34,8 @@ def main():
         if key_lst[pg.K_LEFT]:
             kouka_rct.move_ip((-1,0))
         if key_lst[pg.K_RIGHT]:
-            kouka_rct.move_ip((+1,0))
+            kouka_rct.move_ip((+2,0))
+        kouka_rct.move_ip((-1,0))
         pg.display.update()
         tmr += 1
         clock.tick(200)
